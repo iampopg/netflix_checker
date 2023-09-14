@@ -83,7 +83,7 @@ def netflix(email, name, used_proxies):
                 
             # else:
         else:
-            print('Server error, please notify the Provider')
+            print(f'Not Good response code is: {response.status_code}. please notify the Provider')
     except FileNotFoundError as e:
         print()
         print(blue+ ' please run this program with proxy, put some proxies inside proxies.config')
