@@ -84,6 +84,10 @@ def netflix(email, name, used_proxies):
             # else:
         else:
             print('Server error, please notify the Provider')
+    except FileNotFoundError as e:
+        print()
+        print(blue+ ' please run this program with proxy, put some proxies inside proxies.config')
+        sys.exit()
     except Exception as e:
         print(e)
 
@@ -163,11 +167,15 @@ def run():
                             
                             netflix(email, save_name, used_proxies)
                         
+                        
                 except KeyboardInterrupt:
                     print()
                     print()
                     print(red + "Thank for you time....")
                     time.sleep(1)
+                except FileNotFoundError:
+                    print(f"Can't find the file named {file} on your system")
+                    sys.exit
             elif opt.lower() == 'no':
                 print()
                 print("Please do that and try again...")
@@ -216,4 +224,6 @@ def run():
         except:
             pass
 if __name__ == '__main__':
+    if not os.path.exists("conf"):
+        os.makedirs("conf")
     run()
